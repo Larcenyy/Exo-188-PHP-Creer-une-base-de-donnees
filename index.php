@@ -22,15 +22,25 @@
 
 // TODO Votre code ici bas.
 
+
+$db = "test";
+$server = "localhost";
+$user = "root";
+$password = "";
+
 try {
-    $maConnexion = ........
+    $maConnexion = new PDO("mysql:host=$server,dbname=$db;charset=utf8", $user, $password);
 
     $request = "
-        Ma super requête SQL pour créer une base de données.
+        CREATE TABLE intro_sql (
+            id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+            nom VARCHAR(30) NOT NULL,
+            prenom VARCHAR(30) NOT NULL,
+            rue VARCHAR(70) NOT NULL,
+            numero SMALLINT UNSIGNED NOT NULL,
+        )
     ";
-
-    $maConnexion->une super méthode pour exécuter ma requete
-
+    $maConnexion->exec($request);
     echo "La base de données intro_sql a bien été créée.";
 }
 catch (PDOException $exception) {
